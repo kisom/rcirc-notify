@@ -27,6 +27,8 @@
 ;; MA 02111-1307 USA
 
 ;;; Changelog:
+;; * 2014/03/02 - Add support for stumpwm's message bar.
+;;
 ;; * 2013/09/04 - Add support for terminal-notifier.
 ;;
 ;; * 2011/10/13 - Clean up the namespace, add customization, prevent
@@ -166,6 +168,8 @@ then this controls the timeout of that popup."
 			     "-e" ,(concat "notify with name \"rcirc\" title \"rcirc\" description \""
 					   msg "\" application name \"Emacs\"")
 			     "-e" "end tell")))
+    ((executable-find "stumpish")
+     (start-process "stumpish" "echo" msg))
     (t (error "No method available to page you."))))
 
 (defun rcirc-notify (sender &optional text)
