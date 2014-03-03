@@ -169,7 +169,7 @@ then this controls the timeout of that popup."
 					   msg "\" application name \"Emacs\"")
 			     "-e" "end tell")))
     ((executable-find "stumpish")
-     (start-process "stumpish" "echo" msg))
+     (start-process "page-me" nil "stumpsh" "echo" msg))
     (t (error "No method available to page you."))))
 
 (defun rcirc-notify (sender &optional text)
